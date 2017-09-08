@@ -169,87 +169,68 @@ function drawtriangle(data) {
     context.stroke();
     context.closePath();
 
+    context.beginPath();
+    context.moveTo(drawgazoanalizators(data.ug, k, ks1, ks2, l)*Math.cos(angle1) + x,
+        drawgazoanalizators(data.ug, k, ks1, ks2, l)*Math.sin(angle1) + y);
+    context.lineTo(drawgazoanalizators(data.n, k, ks1, ks2, l)*Math.cos(angle2) + x,
+        drawgazoanalizators(data.n, k, ks1, ks2, l)*Math.sin(angle2) + y);
+    context.lineTo(drawgazoanalizators(data.m, k, ks1, ks2, l)*Math.cos(angle3) + x,
+        drawgazoanalizators(data.m, k, ks1, ks2, l)*Math.sin(angle3) + y);
+     context.lineTo(drawgazoanalizators(data.ug, k, ks1, ks2, l)*Math.cos(angle1) + x,
+        drawgazoanalizators(data.ug, k, ks1, ks2, l)*Math.sin(angle1) + y);
+    context.lineWidth = 3;
+    context.strokeStyle = '#4d4fff';
+    context.stroke();
+    context.closePath();
+
+    context.beginPath();
+    context.moveTo(drawgazoanalizators_n(data.n_ug, data.v_ug, k, ks1, ks2, l)*Math.cos(angle1) + x,
+        drawgazoanalizators_n(data.n_ug, data.v_ug, k, ks1, ks2, l)*Math.sin(angle1) + y);
+    context.lineTo(drawgazoanalizators_n(data.n_n, data.v_n, k, ks1, ks2, l)*Math.cos(angle2) + x,
+        drawgazoanalizators_n(data.n_n, data.v_n, k, ks1, ks2, l)*Math.sin(angle2) + y);
+    context.lineTo(drawgazoanalizators_n(data.n_m, data.v_m, k, ks1, ks2, l)*Math.cos(angle3) + x,
+        drawgazoanalizators_n(data.n_m, data.v_m, k, ks1, ks2, l)*Math.sin(angle3) + y);
+     context.lineTo(drawgazoanalizators_n(data.n_ug, data.v_ug, k, ks1, ks2, l)*Math.cos(angle1) + x,
+        drawgazoanalizators_n(data.n_ug, data.v_ug, k, ks1, ks2, l)*Math.sin(angle1) + y);
+    context.lineWidth = 3;
+    context.strokeStyle = '#ff0110';
+    context.stroke();
+    context.closePath();
     cnv.show()
-/*    var min = data.min;
-    var max = data.max;
-    var arcForData = 1.5 * Math.PI / (max - min);
-    var offset = 0.75 * Math.PI - arcForData * min;
-    rs = rs - rs * 0.1;
-    context.beginPath();
-    context.arc(x, y, rs, arcForData * min + offset, arcForData * max + offset);
-    context.lineWidth = 4;
-    context.strokeStyle = '#e80c4d';
-    context.stroke();
-    context.closePath();
-    context.beginPath();
-    context.arc(x, y, rs, arcForData * data.lolo + offset, arcForData * data.hihi + offset);
-    context.lineWidth = 4;
-    context.strokeStyle = '#E6D844';
-    context.stroke();
-    context.closePath();
-    context.beginPath();
-    context.arc(x, y, rs, arcForData * data.lohi + offset, arcForData * data.hilo + offset);
-    context.lineWidth = 4;
-    context.strokeStyle = '#00ff00';
-    context.stroke();
-    context.closePath();
-    var rs1 = rs - rs * 0.1;
-    rs = rs + rs * .01;
-    context.beginPath();
-    context.moveTo(rs1 * Math.cos(arcForData * min + offset) + x, rs1 * Math.sin(arcForData * min + offset) + y);
-    context.lineTo(rs * Math.cos(arcForData * min + offset) + x, rs * Math.sin(arcForData * min + offset) + y);
-    context.lineWidth = 4;
-    context.strokeStyle = '#e80c4d';
-    context.stroke();
-    context.closePath();
-    context.beginPath();
-    context.moveTo(rs1 * Math.cos(arcForData * data.lolo + offset) + x, rs1 * Math.sin(arcForData * data.lolo + offset) + y);
-    context.lineTo(rs * Math.cos(arcForData * data.lolo + offset) + x, rs * Math.sin(arcForData * data.lolo + offset) + y);
-    context.lineWidth = 4;
-    context.strokeStyle = '#E6D844';
-    context.stroke();
-    context.closePath();
-    context.beginPath();
-    context.moveTo(rs1 * Math.cos(arcForData * data.lohi + offset) + x, rs1 * Math.sin(arcForData * data.lohi + offset) + y);
-    context.lineTo(rs * Math.cos(arcForData * data.lohi + offset) + x, rs * Math.sin(arcForData * data.lohi + offset) + y);
-    context.lineWidth = 4;
-    context.strokeStyle = '#00ff00';
-    context.stroke();
-    context.closePath();
-    context.beginPath();
-    context.moveTo(rs1 * Math.cos(arcForData * data.hilo + offset) + x, rs1 * Math.sin(arcForData * data.hilo + offset) + y);
-    context.lineTo(rs * Math.cos(arcForData * data.hilo + offset) + x, rs * Math.sin(arcForData * data.hilo + offset) + y);
-    context.lineWidth = 4;
-    context.strokeStyle = '#00ff00';
-    context.stroke();
-    context.closePath();
-    context.beginPath();
-    context.moveTo(rs1 * Math.cos(arcForData * data.hihi + offset) + x, rs1 * Math.sin(arcForData * data.hihi + offset) + y);
-    context.lineTo(rs * Math.cos(arcForData * data.hihi + offset) + x, rs * Math.sin(arcForData * data.hihi + offset) + y);
-    context.lineWidth = 4;
-    context.strokeStyle = '#E6D844';
-    context.stroke();
-    context.closePath();
-    context.beginPath();
-    context.moveTo(rs1 * Math.cos(arcForData * max + offset) + x, rs1 * Math.sin(arcForData * max + offset) + y);
-    context.lineTo(rs * Math.cos(arcForData * max + offset) + x, rs * Math.sin(arcForData * max + offset) + y);
-    context.lineWidth = 4;
-    context.strokeStyle = '#e80c4d';
-    context.stroke();
-    var point = w * 0.05;
-    rs1 = rs1 - rs1 * 0.15;
-    context.fillStyle = "#F2F2F2";
-    context.font = point + "pt Verdana";
-    //   x = x - x * 0.05 * (360 - arcForData);
-    var ktoeff = 0.5
-    context.fillText(min, rs1 * Math.cos(arcForData * min + offset) + x - ktoeff * (arcForData * min), rs1 * Math.sin(arcForData * min + offset) + y + 15);
-    context.fillText(data.lolo, rs1 * Math.cos(arcForData * data.lolo + offset) + x - ktoeff * (arcForData * data.lolo), rs1 * Math.sin(arcForData * data.lolo + offset) + y);
-    context.fillText(data.lohi, rs1 * Math.cos(arcForData * data.lohi + offset) + x - ktoeff * (arcForData * data.lohi), rs1 * Math.sin(arcForData * data.lohi + offset) + y);
-    rs1 = rs1 - point * 0.75;
-    context.fillText(data.hilo, rs1 * Math.cos(arcForData * data.hilo + offset) + x - ktoeff * (arcForData * data.hilo), rs1 * Math.sin(arcForData * data.hilo + offset) + y);
-    context.fillText(data.hihi, rs1 * Math.cos(arcForData * data.hihi + offset) + x - ktoeff * (arcForData * data.hihi), rs1 * Math.sin(arcForData * data.hihi + offset) + y);
-    context.fillText(max, rs1 * Math.cos(arcForData * max + offset) + x - ktoeff * (arcForData * max), rs1 * Math.sin(arcForData * max + offset) + y);
-*/
+
+}
+
+function drawgazoanalizators(analiz, k, ks1, ks2, l)
+{
+    if(analiz <  0.3)
+    {
+        return (ks2*k*l / 0.4) * (analiz + 0.1);
+    }
+    if(analiz >= 0.3 && analiz < 0.5)
+    {
+        return (analiz - 0.3)*(ks1*k*l - ks2*k*l)/0.2 + ks2*k*l;
+    }
+    if(analiz > 0.5)
+    {
+        if(analiz > 1.5)
+            analiz = 1.5;
+        return (analiz - 0.5)* (3*k*l - ks1*k*l) + ks1*k*l;
+    }
+}
+function drawgazoanalizators_n(analiz, v, k, ks1, ks2, l)
+{
+    if(analiz == 0)
+    {
+        return ks2*k*l* v;
+    }
+    if(analiz == 1)
+    {
+        return (ks1*k*l - ks2*k*l)* v + ks2*k*l;
+    }
+    if(analiz == 2)
+    {
+        return (3*k*l - ks1*k*l)* v + ks1*k*l;
+    }
 }
 
 function drawArc(max, min, val, obj, typep, eu) {

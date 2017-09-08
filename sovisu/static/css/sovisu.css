@@ -220,3 +220,8 @@ ul#menu {
     top: 0;
     left: 0;
 }
+.chart_size
+{
+    height: 26%;
+    width: 100%;
+}

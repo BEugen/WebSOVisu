@@ -1,0 +1,222 @@
+html {
+    background-color: #e2e2e2;
+    margin: 0;
+    padding: 0;
+    height: 115%;
+}
+
+body {
+    background-color: #fff;
+   /* border-top: solid 10px #000;*/
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+   /* height: 100%;*/
+}
+
+a {
+    color: #333;
+    outline: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: underline;
+}
+
+    a:link, a:visited,
+    a:active, a:hover {
+        color: #333;
+    }
+
+    a:hover {
+        background-color: #c7d1d6;
+    }
+
+header, footer, hgroup,
+nav, section {
+    display: block;
+}
+
+mark {
+    background-color: #a6dbed;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+    h5 a:link, h5 a:visited, h5 a:active {
+        padding: 0;
+        text-decoration: none;
+    }
+
+/* main layout
+----------------------------------------------------------*/
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+#body {
+    background-color: #efeeef;
+    clear: both;
+    padding-bottom: 35px;
+    height: 100%;
+}
+
+    .main-content {
+        padding-left: 0px;
+        padding-top: 0px;
+    }
+
+    .featured + .main-content {
+    /*  background: url("../Images/heroAccent.png") no-repeat;*/
+    }
+
+header .content-wrapper {
+    padding-top: 9px;
+}
+
+footer {
+    clear: both;
+    background-color: #e2e2e2;
+    font-size: .8em;
+    height: 100px;
+}
+
+
+/* site title
+----------------------------------------------------------*/
+.site-title {
+    color: #eaeaea;
+    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 2.3em;
+    margin: 0;
+}
+
+.site-title a, .site-title a:hover, .site-title a:active {
+    background: none;
+    color: #eaeaea;
+    outline: none;
+    text-decoration: none;
+}
+ul#menu {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0 0 5px;
+    padding: 0;
+    text-align: right;
+    padding: 4px;
+}
+
+    ul#menu li {
+        display: inline;
+        list-style: none;
+        padding-left: 15px;
+    }
+
+        ul#menu li a {
+            background: none;
+            color:  #eaeaea;
+            text-decoration: none;
+        }
+
+        ul#menu li a:hover {
+            color: #333;
+            text-decoration: none;
+        }
+
+
+/* page elements
+----------------------------------------------------------*/
+/* featured */
+.featured {
+    background-color: #fff;
+}
+
+    .featured .content-wrapper {
+        background-color: rgb(110, 115, 120);
+        background-image: -ms-linear-gradient(left,rgb(110, 115, 120) 0%, rgb(170, 171, 174) 100%);
+        background-image: -o-linear-gradient(left,rgb(110, 115, 120) 0%, rgb(170, 171, 174) 100%);
+        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgb(110, 115, 120)), color-stop(1, rgb(170, 171, 174)));
+        background-image: -webkit-linear-gradient(left, rgb(110, 115, 120) 0%, rgb(170, 171, 174) 100%);
+        background-image: linear-gradient(left, rgb(110, 115, 120) 0%, rgb(170, 171, 174) 100%);
+        color: rgb(110, 115, 120);
+        padding: 7px 10px 1px 20px;
+        height: 40px;
+    }
+
+        .featured hgroup.title h1, .featured hgroup.title h2 {
+            color: #fff;
+        }
+
+
+.reportheader
+{
+    background-color: rgb(96, 119, 162);
+    background-image: -ms-linear-gradient(left,rgb(26, 42, 68)  0%, rgb(130, 150, 193) 100%);
+    background-image: -o-linear-gradient(left,rgb(26, 42, 68) 0%, rgb(130, 150, 193) 100%);
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgb(26, 42, 68)), color-stop(1, rgb(130, 150, 193)));
+    background-image: -webkit-linear-gradient(left, rgb(26, 42, 68) 0%, rgb(130, 150, 193) 100%);
+    background-image: linear-gradient(left, rgb(26, 42, 68) 0%, rgb(130, 150, 193) 100%);
+    color: #fff;
+    padding: 3px 10px 3px 10px;
+    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+.half_width
+{
+    width: 46%;
+}
+.height_full
+{
+    height: 100%;
+}
+.triangle_canvas {
+    top: 0;
+    left: 0;
+}

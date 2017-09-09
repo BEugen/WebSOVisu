@@ -1,25 +1,4 @@
 ﻿
-
-function drawIndicator(obj, url, typep, eu) {
-    $.ajax(
-        {
-            url: url,
-            data: {
-                id: obj
-            },
-            type: 'POST',
-            beforeSend: function () {
-            },
-            success: function (data) {
-                drawGaude(data);
-                drawArc(data.max, data.min, 0, data.id, typep, eu);
-            },
-            error: function () {
-
-            }
-        });
-}
-
 function drawChart(obj, url, bind) {
     $.ajax(
         {
@@ -283,43 +262,27 @@ function drawArc(max, min, val, obj, typep, eu) {
 
 
 
-function getIndicator(obj, url, round, typep, eu, updatagaude) {
+function gettriangle(url, token) {
     $.ajax(
         {
             url: url,
             data: {
-                id: obj
+                id: 0, 'csrfmiddlewaretoken': token
             },
+            dataType: 'json',
             timeout: 10000,
             type: 'POST',
             beforeSend: function () {
             },
             success: function (data) {
-                var val = data.val;
-                if (val > data.room.max)
-                    val = data.room.max;
-                if (val < data.room.min)
-                    val = data.room.min;
-                if (updatagaude != null)
-                    drawGaude(data.room);
-                drawArc(data.room.max, data.room.min, val, data.id);
-                $("#ind_g_" + data.id).text(typep + " = " + (data.val).toFixed(round) + eu);
-                $("#rh_" + data.id).css("background-color", "#686868");
-                if(val > data.room.hilo || val < data.room.lohi)
-                    $("#rh_" + data.id).css("background-color", "#E6D844");
-                if(val > data.room.hihi || val < data.room.lolo)
-                    $("#rh_" + data.id).css("background-color", "#e80c4d");
-                $("#counter-digest > div").each(function (index) {
-                    if(index < data.counter.length)
-                      $("#n" + (index+1)).text(data.counter.substr(index, 1));
-                });
+                drawtriangle(data);
                 window.setTimeout(function () {
-                    getIndicator(obj, url, round, typep, eu, updatagaude);
+                    gettriangle(url, token);
                 }, 5000);
             },
             error: function () {
                 window.setTimeout(function () {
-                    getIndicator(obj, url, round, typep, eu, updatagaude);
+                    gettriangle(url, token);
                 }, 5000);
             }
         });

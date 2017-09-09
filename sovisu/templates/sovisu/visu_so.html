@@ -58,6 +58,7 @@
         $.plot("#ch_n", [d1, d2, d3]);
         $.plot("#ch_m", [d1, d2, d3]);
         $.plot("#ch_u", [d1, d2, d3]);
+        gettriangle('/visu_ajax_gzd' , '{{ csrf_token }}');
 
     });
 </script>

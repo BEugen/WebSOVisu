@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 class Weather(models.Model):
-    wth_date = models.DateTimeField(default=timezone.now())
+    wth_date = models.DateTimeField()
     T = models.FloatField()
     Po = models.FloatField()
     P = models.FloatField()
@@ -16,13 +16,13 @@ class Weather(models.Model):
 
 
 class AnalizatorData(models.Model):
-    an_date = models.DateTimeField(default=timezone.now())
+    an_date = models.DateTimeField()
     so_m = models.FloatField()
     so_n = models.FloatField()
     so_ug = models.FloatField()
-    so_n_date = models.DateTimeField(default=timezone.now())
-    so_m_date = models.DateTimeField(default=timezone.now())
-    so_ug_date = models.DateTimeField(default=timezone.now())
+    so_n_date = models.DateTimeField()
+    so_m_date = models.DateTimeField()
+    so_ug_date = models.DateTimeField()
     so_m_nr = models.IntegerField()
     so_n_nr = models.IntegerField()
     so_ug_nr = models.IntegerField()

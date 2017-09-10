@@ -11,13 +11,6 @@ def visu_so(request):
 def visu_ajax_gzd(request):
     if request.method == 'POST':
         if request.is_ajax():
-
-            print("**ajax form post**")
-            for k, v in request.POST.items():
-                print(k, v)
-
-            print("field1 data: %s" % request.POST['field1'])
-            print("field2 data: %s" % request.POST['field2'])
-
-            mydata = [{'foo': 1, 'baz': 2}]
-            return HttpResponse(json.dumps(mydata), mimetype="application/json")
+            data = {'n': 0.29, 'n_q': 192, 'm': 0.29, 'm_q': 192, 'ug': 0.29, 'ug_q': 192,
+                     'n_ug': 2, 'v_ug': 0.9, 'n_m': 0, 'v_m': 0.6, 'n_n': 1, 'v_n': 0.9}
+            return HttpResponse(json.dumps(data), content_type="application/json")

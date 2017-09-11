@@ -45,8 +45,9 @@ function drawChart(obj, url, bind) {
 
 function drawtriangle(data) {
     var cnv = $("#triangle");
-    var w = $("#dv_triangle").innerWidth();
-    var h = $("#dv_triangle").innerHeight();
+    var triangle = $("#dv_triangle");
+    var w = triangle.innerWidth();
+    var h = triangle.innerHeight();
     if (h > w) {
         h = w;
     } else {
@@ -54,8 +55,8 @@ function drawtriangle(data) {
     }
     var x = w *.5;
     var y = h *.5;
-    var l = x*0.9
-    $("#dv_triangle").width(w).height(h)
+    var l = x*0.95;
+    triangle.width(w).height(h);
     cnv.width(w).height(h);
     cnv.attr('width', w).attr('height', h);
     var context = cnv.get(0).getContext('2d');
@@ -92,7 +93,7 @@ function drawtriangle(data) {
     context.moveTo(ks1*k*l*Math.cos(angle1) + x, ks1*k*l*Math.sin(angle1) + y);
     context.lineTo(ks1*k*l*Math.cos(angle2) + x, ks1*k*l*Math.sin(angle2) + y);
     context.lineTo(ks1*k*l*Math.cos(angle3) + x, ks1*k*l*Math.sin(angle3) + y);
-    context.fillStyle='#ffffff'
+    context.fillStyle='#ffffff';
     context.fillStyle = 'rgba(255, 110, 0, 0.1)';
     context.fill();
     context.lineWidth = 1;
@@ -125,7 +126,7 @@ function drawtriangle(data) {
 
     context.beginPath();
     context.moveTo(x, y);
-    context.lineTo(l*Math.cos(angle1) + x, l*Math.sin(angle1) + y)
+    context.lineTo(l*0.95*Math.cos(angle1) + x, l*0.95*Math.sin(angle1) + y);
     context.lineWidth = 3;
     context.fillStyle = '#525457';
     context.strokeStyle = '#525457';
@@ -133,7 +134,7 @@ function drawtriangle(data) {
     context.closePath();
     context.beginPath();
     context.moveTo(x, y);
-    context.lineTo(l*Math.cos(angle2) + x, l*Math.sin(angle2) + y)
+    context.lineTo(l*0.95*Math.cos(angle2) + x, l*0.95*Math.sin(angle2) + y);
     context.lineWidth = 3;
     context.fillStyle = '#525457';
     context.strokeStyle = '#525457';
@@ -141,7 +142,7 @@ function drawtriangle(data) {
     context.closePath();
     context.beginPath();
     context.moveTo(x, y);
-    context.lineTo(l*Math.cos(angle3) + x, l*Math.sin(angle3) + y)
+    context.lineTo(l*0.95*Math.cos(angle3) + x, l*0.95*Math.sin(angle3) + y);
     context.lineWidth = 3;
     context.fillStyle = '#525457';
     context.strokeStyle = '#525457';
@@ -175,10 +176,66 @@ function drawtriangle(data) {
     context.strokeStyle = '#ff0110';
     context.stroke();
     context.closePath();
+    drawvalue(context, data, x, y, l, w, h);
     cnv.show()
 
 }
 
+function drawvalue(cont, data, x, y, l, w, h)
+{
+    var angle1 = 272 * (Math.PI / 180);
+    var angle2 = 140 * (Math.PI / 180);
+    var angle3 = 40 * (Math.PI / 180);
+    cont.fillStyle = getcolor(data.ug);
+    var x1 = l*Math.cos(angle1) + x;
+    var y1 = l*Math.sin(angle1) + y;
+    var w1 = w*0.15;
+    var h1 = h*0.05;
+    cont.fillRect(x1, y1, w1, h1);
+    cont.strokeStyle = '#525457';
+    cont.lineWidth = 1;
+    cont.strokeRect(x1, y1, w1, h1);
+    cont.font = w*0.04 + "pt Verdana";
+    cont.fillStyle = '#525457';
+    cont.fillText(data.ug_q >= 192? data.ug : '???', x1 + 3, y1 + h1*0.9);
+    cont.fillText('УГМС', x1 - h1*3.5, y1 + h1*0.9);
+
+    ll = l*0.77;
+    var x2 = ll*Math.cos(angle2) + x;
+    var y2 = ll*Math.sin(angle2) + y;
+    var w2 = w*0.15;
+    var h2 = h*0.05;
+    cont.fillStyle = getcolor(data.n);
+    cont.fillRect(x2, y2, w2, h2);
+    cont.strokeStyle = '#525457';
+    cont.lineWidth = 1;
+    cont.strokeRect(x2, y2, w2, h2);
+    cont.fillStyle = '#525457';
+    cont.fillText(data.n_q >= 192? data.n : '???', x2 + 3, y2 + h2*0.9);
+    cont.fillText('Нагор.', x2 - h2*4, y2 + h2*0.9);
+
+    ll = l*0.78;
+    var x3 = ll*Math.cos(angle3) + x;
+    var y3 = ll*Math.sin(angle3) + y;
+    var w3 = w*0.15;
+    var h3 = h*0.05;
+    cont.fillStyle = getcolor(data.m);
+    cont.fillRect(x3, y3, w3, h3);
+    cont.strokeStyle = '#525457';
+    cont.lineWidth = 1;
+    cont.strokeRect(x3, y3, w3, h3);
+    cont.fillStyle = '#525457';
+    cont.fillText(data.m_q >= 192? data.m : '???', x3 + 3, y3 + h3*0.9);
+    cont.fillText('Молод.', x3 - h3*4, y3 + h3*0.9);
+}
+function getcolor(val)
+{
+    if (val < 0.3)
+        return 'rgba(26, 255, 7, 0.1)';
+    if(val >=0.3 && val < 0.5)
+        return 'rgba(255, 110, 0, 0.1)';
+    return 'rgba(255, 17, 31, 0.15)';
+}
 function drawgazoanalizators(analiz, k, ks1, ks2, l)
 {
     if(analiz <  0.3)
@@ -198,69 +255,19 @@ function drawgazoanalizators(analiz, k, ks1, ks2, l)
 }
 function drawgazoanalizators_n(analiz, v, k, ks1, ks2, l)
 {
-    if(analiz == 0)
+    if(analiz === 0)
     {
         return ks2*k*l* v;
     }
-    if(analiz == 1)
+    if(analiz === 1)
     {
         return (ks1*k*l - ks2*k*l)* v + ks2*k*l;
     }
-    if(analiz == 2)
+    if(analiz === 2)
     {
         return (3*k*l - ks1*k*l)* v + ks1*k*l;
     }
 }
-
-function drawArc(max, min, val, obj, typep, eu) {
-    var cnv = $("#cnv_" + obj);
-    var w = cnv.width();
-    var h = cnv.height();
-    var wind = w * 0.55;
-    var hind = h * 0.20;
-    var position = cnv.position();
-    var ind = $("#ind_g_" + obj);
-    ind.width(wind).height(hind);
-    ind.attr('width', wind).attr('height', hind);
-    ind.text(typep + " = ???" + eu);
-    ind.css("top", position.top + h - hind);
-    ind.css("left", position.left + w * 0.5 - wind * 0.5);
-    ind.show();
-    cnv = $("#ar_" + obj);
-    cnv.width(w).height(h);
-    cnv.attr('width', w).attr('height', h);
-    cnv.offset({ top: position.top, left: position.left });
-    var arcForData = 1.5 * Math.PI / (max - min);
-    var offset = 1.75 * Math.PI - arcForData * min;
-    var rs = 0;
-    if (w > h) {
-        rs = h / 2;
-    } else {
-        rs = w / 2;
-    }
-    rs -= 6;
-    rs = rs - rs * 0.1;
-    var offsetArc = rs * 0.2;
-    var context = cnv.get(0).getContext('2d');
-    context.clearRect(0, 0, w, h);
-    context.translate(w / 2, h / 2);
-    context.rotate(val * arcForData + offset);
-    context.beginPath();
-    context.moveTo(-rs, 0);
-    context.lineTo(offsetArc, h * 0.045);
-    context.lineTo(0, 0);
-    context.lineTo(offsetArc, -h * 0.045);
-    context.lineTo(-rs, 0);
-    context.fillStyle = '#F2F2F2';
-    context.fill();
-    context.lineWidth = 2;
-    context.strokeStyle = '#d2691e';
-    context.stroke();
-    context.closePath();
-    cnv.show();
-}
-
-
 
 function gettriangle(url, token) {
     $.ajax(
@@ -300,6 +307,5 @@ function formatTime(mseconds) {
         minut = "0" + minut;
     if (second <= 9)
         second = "0" + second;
-    var clockf = " " + time.getUTCDate() + "." + mon + "." + time.getFullYear() + " " + time.getUTCHours() + ":" + minut;
-    return clockf;
+    return " " + time.getUTCDate() + "." + mon + "." + time.getFullYear() + " " + time.getUTCHours() + ":" + minut;
 }

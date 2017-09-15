@@ -36,3 +36,16 @@ class AnalizatorData(models.Model):
 
     def getrow(self, date):
         return self.objects.filter(an_date__lte=date).order_by(Coalesce('an_date').desc()).first()
+
+
+class InSqlData(models.Model):
+    an_date = models.DateTimeField()
+    c4_q = models.FloatField()
+    c5_q = models.FloatField()
+    c6_q = models.FloatField()
+    c7_q = models.FloatField()
+    c8_q = models.FloatField()
+    so2_m = models.FloatField()
+    so2_n = models.FloatField()
+    so2_ug = models.FloatField()
+    rtp = models.IntegerField()

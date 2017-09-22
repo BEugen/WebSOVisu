@@ -34,8 +34,6 @@ class AnalizatorData(models.Model):
     so_n_nr_v = models.FloatField()
     so_ug_nr_v = models.FloatField()
 
-    def getrow(self, date):
-        return self.objects.filter(an_date__lte=date).order_by(Coalesce('an_date').desc()).first()
 
 
 class InSqlData(models.Model):

@@ -225,7 +225,7 @@ function drawvalue(cont, data, x, y, l, w, h)
     cont.lineWidth = 1;
     cont.strokeRect(x3, y3, w3, h3);
     cont.fillStyle = '#525457';
-    cont.fillText(data.m_q >= 192? data.m. : '???', x3 + 3, y3 + h3*0.9);
+    cont.fillText(data.m_q >= 192? data.m : '???', x3 + 3, y3 + h3*0.9);
     cont.fillText('Молод.', x3 - h3*4, y3 + h3*0.9);
 }
 function getcolor(val)

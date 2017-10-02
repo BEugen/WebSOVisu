@@ -101,7 +101,7 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
+    background-color: #5a595a;
     clear: both;
     padding-bottom: 35px;
     height: 100%;
@@ -210,11 +210,16 @@ ul#menu {
 }
 .half_width
 {
-    width: 46%;
+    width: 47%;
 }
 .height_full
 {
     height: 100%;
+}
+.triangle_div
+{
+    margin-left: 5%;
+    margin-top: 6%;
 }
 .triangle_canvas {
     top: 0;

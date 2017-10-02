@@ -3,18 +3,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Газоанализаторы ПЦ</title>
+    <title>Газоанализаторы ПЦ (feat. CNTK)</title>
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/sovisu.css' %}">
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/triangle.js' %}"></script>
     <script src="{% static 'js/flot/jquery.flot.min.js' %}"></script>
-    <script src="{% static 'js/flot/jquery.flot.resize.min.js' %}"></script>
+    <script src="{% static 'js/flot/jquery.flot.time.min.js' %}"></script>
     <script src="{% static 'js/triangle.js' %}"></script>
 </head>
 <body>
    <header class="featured">
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">Показания газоанализаторов ПЦ</p>
+                    <p class="site-title">Показания газоанализаторов ПЦ (feat. CNTK Microsoft)</p>
                 </div>
                 <div class="float-right">
                     <nav>
@@ -29,21 +31,19 @@
         </header>
         <div id="body">
             <section class="content-wrapper main-content clear-fix height_full">
-              <div id="dv_triangle" class="float-left half_width height_full">
+              <div id="dv_triangle" class="float-left half_width height_full triangle_div">
                   <canvas class="triangle_canvas" id="triangle"></canvas>
               </div>
                 <div class="float-right half_width height_full">
-                    <div id="ch_n" class="float-left chart_size"></div>
-                    <div id="ch_m" class="float-left chart_size"></div>
-                    <div id="ch_u" class="float-left chart_size"></div>
+                    <div id="ch_0" class="float-left chart_size"></div>
+                    <div id="ch_1" class="float-left chart_size"></div>
+                    <div id="ch_2" class="float-left chart_size"></div>
                 </div>
             </section>
         </div>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var data = { n:0.29, m:0.29, ug:0.29, n_ug: 2, v_ug : 0.9, n_m : 0, v_m : 0.6, n_n: 1, v_n : 0.9};
-        drawtriangle(data);
         var d1 = [];
         for (var i = 0; i < 14; i += 0.5) {
             d1.push([i, Math.sin(i)]);
@@ -54,12 +54,61 @@
         // A null signifies separate line segments
 
         var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
+        var options = {
 
-        $.plot("#ch_n", [d1, d2, d3]);
-        $.plot("#ch_m", [d1, d2, d3]);
-        $.plot("#ch_u", [d1, d2, d3]);
+            color: ["#F2691F", "#218EFF", "#39ff3e", "#f20010", "#857AF5"]
+            ,
+            xaxis:
+            {
+                mode: "time",
+                //timezone: "browser",
+                useLocalTime: false,
+                timeformat: "%d.%m.%y\n%H:%M",
+                font: {
+                    color: "#efeeef"
+                }
+            },
+            yaxes: [
+                {
+                    tickLength: 0,
+                    position: "left",
+                    font: {
+                        color: "#efeeef"
+                    }
+                },
+                {
+                    position: "left",
+                },
+                {
+                    position: "left",
+                },
+                {
+                    position: "left",
+                }],
+            legend: {
+                position: "ne",
+                backgroundOpacity: 0.3,
+                labelBoxBorderColor: null,
+                margin: 0,
+                noColumns: 0,
+                show: true,
+                sorted: null},
+            grid: {
+                color: "#efeeef",
+                hoverable: true
+            }
+        };
+
+        //$.plot("#ch_n", [d1, d2, d3], options);
+        //$.plot("#ch_1", [d1, d2, d3], options);
+        //$.plot("#ch_2", [d1, d2, d3], options);
+        var bind_0 = null;
+        var bind_1 = null;
+        var bind_2 = null;
         gettriangle('/visu_ajax_gzd' , '{{ csrf_token }}');
-
+        drawChart(0, '/visu_ajax_thrend', bind_0, options, '{{ csrf_token }}');
+        drawChart(1, '/visu_ajax_thrend', bind_1, options, '{{ csrf_token }}');
+        drawChart(2, '/visu_ajax_thrend', bind_2, options, '{{ csrf_token }}');
     });
 </script>
 </body>

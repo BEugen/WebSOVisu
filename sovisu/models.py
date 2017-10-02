@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.db.models.functions import Coalesce
+import calendar
 
 
 class Weather(models.Model):
@@ -35,7 +36,6 @@ class AnalizatorData(models.Model):
     so_ug_nr_v = models.FloatField()
 
 
-
 class InSqlData(models.Model):
     an_date = models.DateTimeField()
     c4_q = models.FloatField()
@@ -47,3 +47,66 @@ class InSqlData(models.Model):
     so2_n = models.FloatField()
     so2_ug = models.FloatField()
     rtp = models.IntegerField()
+
+
+class DataChart(object):
+    def data_chart(self, cid):
+        sql_val = AnalizatorData.objects.filter(an_date__lte=timezone.now()). \
+                      order_by('-an_date')[:100].all().values()
+        print(timezone.now())
+        template = [{'label': '', 'color': '#218EFF', 'data': []},
+                    {'label': 'Нейросеть', 'color': '#39ff3e', 'data': []},
+                    {'label': 'Предупреждение', 'color': '#F2691F', 'data': [], 'lines': {'lineWidth': 1.2}},
+                    {'label': 'Превышение', 'color': '#f20010', 'data': [], 'lines': {'lineWidth': 1.2}},
+                    ]
+        if cid == 0:
+            mc = 0
+            template[0]['label'] = 'УГМС'
+            for x in sql_val:
+                if x['an_date'].minute % 5 == 0 and x['an_date'].minute != mc:
+                    mc = x['an_date'].minute
+                    self.make_chart_data(template[0]['data'], x['an_date'], x['so_ug'])
+                    self.make_chart_data_nn(template[1]['data'], x['an_date'], x['so_ug_nr'])
+                    self.make_chart_data(template[2]['data'], x['an_date'], 0.3)
+                    self.make_chart_data(template[3]['data'], x['an_date'], 0.5)
+            return template
+
+        if cid == 1:
+            mc = 0
+            template[0]['label'] = 'Нагорное'
+            for x in sql_val:
+                if x['an_date'].minute % 5 == 0 and x['an_date'].minute != mc:
+                    mc = x['an_date'].minute
+                    self.make_chart_data(template[0]['data'], x['an_date'], x['so_n'])
+                    self.make_chart_data_nn(template[1]['data'], x['an_date'], x['so_n_nr'])
+                    self.make_chart_data(template[2]['data'], x['an_date'], 0.3)
+                    self.make_chart_data(template[3]['data'], x['an_date'], 0.5)
+            return template
+
+        if cid == 2:
+            mc = 0
+            template[0]['label'] = 'Молодежная'
+            for x in sql_val:
+                if x['an_date'].minute % 5 == 0 and x['an_date'].minute != mc:
+                    mc = x['an_date'].minute
+                    self.make_chart_data(template[0]['data'], x['an_date'], x['so_m'])
+                    self.make_chart_data_nn(template[1]['data'], x['an_date'], x['so_m_nr'])
+                    self.make_chart_data(template[2]['data'], x['an_date'], 0.3)
+                    self.make_chart_data(template[3]['data'], x['an_date'], 0.5)
+            return template
+
+    def make_chart_data(self, data, dt, val):
+        return data.append([self.make_datetime(dt), val])
+
+    def make_chart_data_nn(self, data, dt, val):
+        nn = 0.0
+        if val == 0:
+            nn = 0.15
+        if val == 1:
+            nn = 0.4
+        if val == 2:
+            nn = 0.6
+        return data.append([self.make_datetime(dt), nn])
+
+    def make_datetime(self, dt):
+        return calendar.timegm(dt.timetuple()) * 1000

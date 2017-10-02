@@ -1,23 +1,19 @@
 ﻿
-function drawChart(obj, url, bind) {
+function drawChart(id, url, bind, options, token) {
     $.ajax(
         {
             url: url,
             data: {
-                id: obj
+                id: id, 'csrfmiddlewaretoken': token
             },
-            timeout: 600000,
+            timeout: 300000,
             type: 'POST',
             beforeSend: function () {
             },
             success: function (data) {
-                var w = $("#cc_" + data.id).innerWidth() - 15;
-                var h = $("#cc_" + data.id).innerHeight() - 5;
-                $("#cht_" + data.id).width(w).height(h);
-                $.plot("#cht_" + data.id, data.FlotData, data.FlotOpt);
-                $(".legend>table").css({ top: 16 });
+                $.plot("#ch_" + id, data, options);
                 if (!bind) {
-                    $("#cht_" + data.id).bind("plothover", function (event, pos, item) {
+                    $("#ch_" + data.id).bind("plothover", function (event, pos, item) {
                         if (item) {
                             var x = item.datapoint[0],
                                 y = item.datapoint[1].toFixed(1);
@@ -32,13 +28,13 @@ function drawChart(obj, url, bind) {
                     bind = true;
                 }
                 window.setTimeout(function () {
-                    drawChart(obj, url, bind);
-                }, 600000);
+                    drawChart(id, url, bind, options, token);
+                }, 300000);
             },
             error: function() {
                 window.setTimeout(function () {
-                    drawChart(obj, url, bind);
-                }, 600000);
+                    drawChart(id, url, bind, options, token);
+                }, 300000);
             }
         });
 }
@@ -71,10 +67,10 @@ function drawtriangle(data) {
     context.moveTo(3*k*l*Math.cos(angle1) + x, 3*k*l*Math.sin(angle1) + y);
     context.lineTo(3*k*l*Math.cos(angle2) + x, 3*k*l*Math.sin(angle2) + y);
     context.lineTo(3*k*l*Math.cos(angle3) + x, 3*k*l*Math.sin(angle3) + y);
-    context.fillStyle = 'rgba(255, 17, 31, 0.15)';
+    context.fillStyle = 'rgba(208, 75, 118, 0.6)';
     context.fill();
     context.lineWidth = 1;
-    context.strokeStyle = 'rgba(255, 17, 31, 0.15)';
+    context.strokeStyle = 'rgba(208, 78, 118, 0.6)';
     context.stroke();
     context.closePath();
 
@@ -116,10 +112,10 @@ function drawtriangle(data) {
     context.moveTo(ks2*k*l*Math.cos(angle1) + x, ks2*k*l*Math.sin(angle1) + y);
     context.lineTo(ks2*k*l*Math.cos(angle2) + x, ks2*k*l*Math.sin(angle2) + y);
     context.lineTo(ks2*k*l*Math.cos(angle3) + x, ks2*k*l*Math.sin(angle3) + y);
-    context.fillStyle = 'rgba(26, 255, 7, 0.1)';
+    context.fillStyle = 'rgba(26, 255, 7, 0.25)';
     context.fill();
     context.lineWidth = 1;
-    context.strokeStyle = 'rgba(26, 255, 7, 0.1)';
+    context.strokeStyle = 'rgba(26, 255, 7, 0.25)';
     context.stroke();
     context.closePath();
 
@@ -159,7 +155,7 @@ function drawtriangle(data) {
      context.lineTo(drawgazoanalizators(data.ug, k, ks1, ks2, l)*Math.cos(angle1) + x,
         drawgazoanalizators(data.ug, k, ks1, ks2, l)*Math.sin(angle1) + y);
     context.lineWidth = 3;
-    context.strokeStyle = '#4d4fff';
+    context.strokeStyle = '#218EFF';
     context.stroke();
     context.closePath();
 
@@ -172,7 +168,7 @@ function drawtriangle(data) {
         drawgazoanalizators_n(data.n_m, data.v_m, k, ks1, ks2, l)*Math.sin(angle3) + y);
      context.lineTo(drawgazoanalizators_n(data.n_ug, data.v_ug, k, ks1, ks2, l)*Math.cos(angle1) + x,
         drawgazoanalizators_n(data.n_ug, data.v_ug, k, ks1, ks2, l)*Math.sin(angle1) + y);
-    context.lineWidth = 3;
+    context.lineWidth = 2;
     context.strokeStyle = '#ff0110';
     context.stroke();
     context.closePath();
@@ -192,11 +188,11 @@ function drawvalue(cont, data, x, y, l, w, h)
     var w1 = w*0.15;
     var h1 = h*0.05;
     cont.fillRect(x1, y1, w1, h1);
-    cont.strokeStyle = '#525457';
+    cont.strokeStyle = '#efeeef';
     cont.lineWidth = 1;
     cont.strokeRect(x1, y1, w1, h1);
     cont.font = w*0.04 + "pt Verdana";
-    cont.fillStyle = '#525457';
+    cont.fillStyle = '#efeeef';
     cont.fillText(data.ug_q >= 192? data.ug : '???', x1 + 3, y1 + h1*0.9);
     cont.fillText('УГМС', x1 - h1*3.5, y1 + h1*0.9);
 
@@ -207,10 +203,10 @@ function drawvalue(cont, data, x, y, l, w, h)
     var h2 = h*0.05;
     cont.fillStyle = getcolor(data.n);
     cont.fillRect(x2, y2, w2, h2);
-    cont.strokeStyle = '#525457';
+    cont.strokeStyle = '#efeeef';
     cont.lineWidth = 1;
     cont.strokeRect(x2, y2, w2, h2);
-    cont.fillStyle = '#525457';
+    cont.fillStyle = '#efeeef';
     cont.fillText(data.n_q >= 192? data.n : '???', x2 + 3, y2 + h2*0.9);
     cont.fillText('Нагор.', x2 - h2*4, y2 + h2*0.9);
 
@@ -221,19 +217,19 @@ function drawvalue(cont, data, x, y, l, w, h)
     var h3 = h*0.05;
     cont.fillStyle = getcolor(data.m);
     cont.fillRect(x3, y3, w3, h3);
-    cont.strokeStyle = '#525457';
+    cont.strokeStyle = '#efeeef';
     cont.lineWidth = 1;
     cont.strokeRect(x3, y3, w3, h3);
-    cont.fillStyle = '#525457';
+    cont.fillStyle = '#efeeef';
     cont.fillText(data.m_q >= 192? data.m : '???', x3 + 3, y3 + h3*0.9);
     cont.fillText('Молод.', x3 - h3*4, y3 + h3*0.9);
 }
 function getcolor(val)
 {
     if (val < 0.3)
-        return 'rgba(26, 255, 7, 0.1)';
+        return 'rgba(26, 255, 7, 0.3)';
     if(val >=0.3 && val < 0.5)
-        return 'rgba(255, 110, 0, 0.1)';
+        return 'rgba(255, 110, 0, 0.3)';
     return 'rgba(255, 17, 31, 0.15)';
 }
 function drawgazoanalizators(analiz, k, ks1, ks2, l)

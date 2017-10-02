@@ -168,8 +168,8 @@ function drawtriangle(data) {
         drawgazoanalizators_n(data.n_m, data.v_m, k, ks1, ks2, l)*Math.sin(angle3) + y);
      context.lineTo(drawgazoanalizators_n(data.n_ug, data.v_ug, k, ks1, ks2, l)*Math.cos(angle1) + x,
         drawgazoanalizators_n(data.n_ug, data.v_ug, k, ks1, ks2, l)*Math.sin(angle1) + y);
-    context.lineWidth = 2;
-    context.strokeStyle = '#ff0110';
+    context.lineWidth = 3;
+    context.strokeStyle = '#42A831';
     context.stroke();
     context.closePath();
     drawvalue(context, data, x, y, l, w, h);

@@ -13,10 +13,10 @@ function drawChart(id, url, bind, options, token) {
             success: function (data) {
                 $.plot("#ch_" + id, data, options);
                 if (!bind) {
-                    $("#ch_" + data.id).bind("plothover", function (event, pos, item) {
+                    $("#ch_" + id).bind("plothover", function (event, pos, item) {
                         if (item) {
                             var x = item.datapoint[0],
-                                y = item.datapoint[1].toFixed(1);
+                                y = item.datapoint[1].toFixed(2);
 
                             $("#tooltip").html(item.series.label + ":" + formatTime(x) + " = " + y)
                                 .css({ top: item.pageY + 5, left: item.pageX - 150 })

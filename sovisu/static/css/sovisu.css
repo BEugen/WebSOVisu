@@ -230,3 +230,14 @@ ul#menu {
     height: 26%;
     width: 100%;
 }
+.tooltip
+{
+    position:absolute;
+    display:none;
+    border:1px solid #525457;
+    padding:4px;
+    background-color:#e2e2e2;
+    opacity:.8;
+    font-size:1.1em;
+    font-weight:bold
+}

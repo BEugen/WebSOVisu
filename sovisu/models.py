@@ -55,7 +55,7 @@ class DataChart(object):
                       order_by('-an_date')[:100].all().values()
         print(timezone.now())
         template = [{'label': '', 'color': '#218EFF', 'data': []},
-                    {'label': 'Нейросеть', 'color': '#42A831', 'data': []},
+                    {'label': 'Нейросеть', 'color': '#42A831', 'data': [], 'lines': {'steps': True}},
                     {'label': 'Предупреждение', 'color': '#F2691F', 'data': [], 'lines': {'lineWidth': 1.2}},
                     {'label': 'Превышение', 'color': '#f20010', 'data': [], 'lines': {'lineWidth': 1.2}},
                     ]

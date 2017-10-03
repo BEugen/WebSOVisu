@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.db.models.functions import Coalesce
 import calendar
-
+from datetime import timedelta
 
 class Weather(models.Model):
     wth_date = models.DateTimeField()
@@ -51,13 +51,14 @@ class InSqlData(models.Model):
 
 class DataChart(object):
     def data_chart(self, cid):
-        sql_val = AnalizatorData.objects.filter(an_date__lte=timezone.now()). \
-                      order_by('-an_date')[:100].all().values()
+        end_date = timezone.now()
+        st_date = end_date + timedelta(hours=-8)
+        sql_val = AnalizatorData.objects.filter(an_date__range=(st_date, end_date)).order_by('-an_date').all().values()
         print(timezone.now())
         template = [{'label': '', 'color': '#218EFF', 'data': []},
                     {'label': 'Нейросеть', 'color': '#42A831', 'data': [], 'lines': {'steps': True}},
                     {'label': 'Предупреждение', 'color': '#F2691F', 'data': [], 'lines': {'lineWidth': 1.2}},
-                    {'label': 'Превышение', 'color': '#f20010', 'data': [], 'lines': {'lineWidth': 1.2}},
+                    {'label': 'Превышение ПДК', 'color': '#f20010', 'data': [], 'lines': {'lineWidth': 1.2}},
                     ]
         if cid == 0:
             mc = 0

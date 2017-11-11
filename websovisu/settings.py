@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'WebSOVisu.urls'
+ROOT_URLCONF = 'websovisu.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'WebSOVisu.wsgi.application'
+WSGI_APPLICATION = 'websovisu.wsgi.application'
 
 
 # Database

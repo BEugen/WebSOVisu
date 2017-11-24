@@ -259,3 +259,35 @@ ul#menu {
     font-size:1.1em;
     font-weight:bold
 }
+.legend-w
+{
+    position: absolute;
+    display: none;
+   /* width: 100%;
+    height: 100%;*/
+   /* background: #545659;*/
+    border: 2px #e2e2e2;
+}
+.l-data
+{
+    margin-top: 20px;
+    margin-left: 5px;
+    color: #39ff3e;
+}
+.l-data-1
+{
+    margin-top: 5px;
+    margin-left: 5px;
+    color: #39ff3e;
+}
+.l-text
+{
+    color: #e2e2e2;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.l-font
+{
+    font-family: Verdana;
+    font-size: 1.0em;
+}

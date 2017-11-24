@@ -48,6 +48,7 @@ function drawwheater(data)
     var x = w *.5;
     var y = h *.5;
     var l = x*0.9;
+    var wind = data['ff10']
     triangle.width(w).height(h);
     cnv.width(w).height(h);
     cnv.attr('width', w).attr('height', h);
@@ -56,6 +57,15 @@ function drawwheater(data)
     context.lineWidth = 2;
     context.strokeStyle = '#e2e2e2';
     context.arc(x, y, l*0.15, 0, 2*Math.PI);
+    context.stroke();
+    context.closePath();
+    context.beginPath();
+    context.lineWidth = 0.01;
+    context.moveTo(x,y);
+    context.arc(x, y, l*0.8, -0.377*Math.PI, -0.125*Math.PI);
+    context.lineTo(x,y);
+    context.fillStyle = 'rgba(226, 80, 7, 0.2)';
+    context.fill();
     context.stroke();
     context.closePath();
     for(var i=0.0; i < 360.0; i+=22.5) {
@@ -75,11 +85,11 @@ function drawwheater(data)
     context.stroke();
     context.closePath();
     var wa = (data['Wg']-90)*Math.PI/180;
-    var r = (l*0.8 * data['ff3']/25.0)/2;
+    var r = (l*0.8 * wind/25.0)/2;
     var grd = context.createRadialGradient(l/2 * Math.cos(wa) + x, l/2 * Math.sin(wa) + y,
         l*0.6, l/2*Math.cos(wa) + x, l/2 * Math.sin(wa) + y, 0);
     grd.addColorStop(0, 'rgba(82, 84, 87, 0.25)');
-    if (data['ff3'] < 14.0)
+    if (wind < 14.0)
     {
         grd.addColorStop(1, '#218EFF');
     }
@@ -102,11 +112,21 @@ function drawwheater(data)
         var wa = (obj['a']-90)*Math.PI/180;
         var x1 = l*obj['l']*Math.cos(wa) + x;
         var y1 = l*obj['l']*Math.sin(wa) + y;
-        var w1 = w*0.15;
-        var h1 = h*0.05;
         context.font = w*0.04 + "pt Verdana";
         context.fillStyle = '#efeeef';
         context.fillText(obj['t'], x1, y1);
     }
+    var pos = triangle.offset();
+    var legend = $("#legend-w");
+    legend.height(h*0.5);
+    legend.width(0.33*w);
+    $("#ndate-v").text(data['wth_date']);
+    $("#t").text('T = ' + data['T'] + '°C');
+    $("#p").text('P = ' + data['P'] + 'мм рт. с.');
+    $("#ff").text('FF = ' + data['ff10'] + 'м/с');
+    $("#ff10").text('FF10 = ' + data['ff3'] + 'м/с');
+    $("#u").text('U = ' + data['U'] + '%');
+    legend.offset({top: pos.top + (h-h*0.5), left: pos.left + w + 2});
+    legend.show();
 }
 

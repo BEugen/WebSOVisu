@@ -3,10 +3,11 @@ from django.contrib.auth import authenticate, login
 import json
 import datetime
 from django.utils import timezone
-from sovisu.models import AnalizatorData, DataChart
+from sovisu.models import AnalizatorData, DataChart, Weather
 from django.db.models.functions import Coalesce
 
 DataForChart = DataChart()
+
 
 def visu_so(request):
     return render(request, 'sovisu/visu_so.html', {})
@@ -32,6 +33,16 @@ def visu_ajax_gzd(request):
             data['m_q'] = 192
             data['ug_q'] = 192
             return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+def visu_ajax_wtr(request):
+    if request.method == 'POST':
+        if request.is_ajax():
+            data = Weather.objects.filter(wth_date__lte=timezone.now()). \
+                        order_by('-wth_date')[:1].all().values()
+            jdata = dict(data[0])
+            jdata['wth_date'] = jdata['wth_date'].strftime("%d.%m.%Y %H:%M")
+            return HttpResponse(json.dumps(jdata), content_type="application/json")
 
 
 def visu_ajax_thrend(request):

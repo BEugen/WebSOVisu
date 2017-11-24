@@ -4,6 +4,7 @@ from django.db.models.functions import Coalesce
 import calendar
 from datetime import timedelta
 
+
 class Weather(models.Model):
     wth_date = models.DateTimeField()
     T = models.FloatField()

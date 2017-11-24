@@ -216,10 +216,28 @@ ul#menu {
 {
     height: 100%;
 }
+.width_full
+{
+    width: 100%;
+}
+.half_height
+{
+    height:47%;
+}
+.half_height-1
+{
+    height:40%;
+}
 .triangle_div
 {
-    margin-left: 5%;
-    margin-top: 6%;
+    margin-left: 15%;
+    margin-top: 1%;
+}
+
+.weather_div
+{
+    margin-left: 20%;
+    margin-top: -15%;
 }
 .triangle_canvas {
     top: 0;

@@ -10,6 +10,7 @@
     <script src="{% static 'js/flot/jquery.flot.min.js' %}"></script>
     <script src="{% static 'js/flot/jquery.flot.time.min.js' %}"></script>
     <script src="{% static 'js/triangle.min.js' %}"></script>
+    <script src="{% static 'js/wheater.js' %}"></script>
 </head>
 <body>
    <header class="featured">
@@ -30,9 +31,14 @@
         </header>
         <div id="body">
             <section class="content-wrapper main-content clear-fix height_full">
-              <div id="dv_triangle" class="float-left half_width height_full triangle_div">
+                <div class="height_full float-left half_width">
+              <div id="dv_triangle" class="half_height width_full triangle_div">
                   <canvas class="triangle_canvas" id="triangle"></canvas>
               </div>
+                     <div id="dv_wheater" class="half_height-1 width_full weather_div">
+                  <canvas class="triangle_canvas" id="wheater"></canvas>
+              </div>
+                </div>
                 <div class="float-right half_width height_full">
                     <div id="ch_0" class="float-left chart_size"></div>
                     <div id="ch_1" class="float-left chart_size"></div>
@@ -104,6 +110,7 @@
         var bind_1 = null;
         var bind_2 = null;
         gettriangle('/visu_ajax_gzd' , '{{ csrf_token }}');
+        getwheater('/visu_ajax_wtr' , '{{ csrf_token }}');
         drawChart(0, '/visu_ajax_thrend', bind_0, options, '{{ csrf_token }}');
         drawChart(1, '/visu_ajax_thrend', bind_1, options, '{{ csrf_token }}');
         drawChart(2, '/visu_ajax_thrend', bind_2, options, '{{ csrf_token }}');

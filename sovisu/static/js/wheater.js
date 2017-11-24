@@ -53,21 +53,37 @@ function drawwheater(data)
     cnv.width(w).height(h);
     cnv.attr('width', w).attr('height', h);
     var context = cnv.get(0).getContext('2d');
+
+    var a1 = -0.438888889*Math.PI;
+    var a2 = -0.072222222*Math.PI;
+    var grd = context.createRadialGradient(x, y, l * 0.9, x, y, 0);
+    grd.addColorStop(0, 'rgba(82, 84, 87, 0.25)');
+    grd.addColorStop(0.9, 'rgba(255, 8, 2, 0.15)');
+    context.beginPath();
+    context.lineWidth = 0.001;
+    context.arc(x, y, l*0.8, a1, a2);
+    context.lineTo(x,y);
+    context.fillStyle = grd;
+    context.fill();
+    context.stroke();
+    context.closePath();
+
+    context.beginPath();
+    context.lineWidth = 0.001;
+    context.arc(x, y, l*0.15, 0, 2*Math.PI);
+    context.lineTo(x,y);
+    context.fillStyle = '#464646';
+    context.fill();
+    context.stroke();
+    context.closePath();
+
     context.beginPath();
     context.lineWidth = 2;
     context.strokeStyle = '#e2e2e2';
     context.arc(x, y, l*0.15, 0, 2*Math.PI);
     context.stroke();
     context.closePath();
-    context.beginPath();
-    context.lineWidth = 0.01;
-    context.moveTo(x,y);
-    context.arc(x, y, l*0.8, -0.377*Math.PI, -0.125*Math.PI);
-    context.lineTo(x,y);
-    context.fillStyle = 'rgba(226, 80, 7, 0.2)';
-    context.fill();
-    context.stroke();
-    context.closePath();
+
     for(var i=0.0; i < 360.0; i+=22.5) {
         var ang = i* (Math.PI / 180);
         context.beginPath();
@@ -79,14 +95,14 @@ function drawwheater(data)
         context.closePath();
     }
     context.beginPath();
-    context.lineWidth = 2;
+    context.lineWidth = 3;
     context.strokeStyle = '#e2e2e2';
     context.arc(x, y, l*0.8, 0, 2*Math.PI);
     context.stroke();
     context.closePath();
     var wa = (data['Wg']-90)*Math.PI/180;
     var r = (l*0.8 * wind/25.0)/2;
-    var grd = context.createRadialGradient(l/2 * Math.cos(wa) + x, l/2 * Math.sin(wa) + y,
+    grd = context.createRadialGradient(l/2 * Math.cos(wa) + x, l/2 * Math.sin(wa) + y,
         l*0.6, l/2*Math.cos(wa) + x, l/2 * Math.sin(wa) + y, 0);
     grd.addColorStop(0, 'rgba(82, 84, 87, 0.25)');
     if (wind < 14.0)

@@ -144,5 +144,6 @@ function drawwheater(data)
     $("#u").text('U = ' + data['U'] + '%');
     legend.offset({top: pos.top + (h-h*0.5), left: pos.left + w + 2});
     legend.show();
+    //
 }
 

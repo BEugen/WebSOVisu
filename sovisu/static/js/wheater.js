@@ -142,7 +142,7 @@ function drawwheater(data)
     $("#ff").text('FF = ' + data['ff10'] + 'м/с');
     $("#ff10").text('FF10 = ' + data['ff3'] + 'м/с');
     $("#u").text('U = ' + data['U'] + '%');
-    legend.offset({top: pos.top + (h-h*0.5), left: pos.left + w + 2});
+    legend.offset({top: Math.floor(pos.top + (h-h*0.5)), left: Math.floor(pos.left + w + 2)});
     legend.show();
     //
 }

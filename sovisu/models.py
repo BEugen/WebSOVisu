@@ -57,7 +57,7 @@ class DataChart(object):
         sql_val = AnalizatorData.objects.filter(an_date__range=(st_date, end_date)).order_by('-an_date').all().values()
         print(timezone.now())
         template = [{'label': '', 'color': '#218EFF', 'data': []},
-                    {'label': 'Нейросеть', 'color': '#42A831', 'data': [], 'lines': {'steps': True}},
+                    {'label': 'Предсказание', 'color': '#42A831', 'data': [], 'lines': {'steps': True}},
                     {'label': 'Предупреждение', 'color': '#F2691F', 'data': [], 'lines': {'lineWidth': 1.2}},
                     {'label': 'Превышение ПДК', 'color': '#f20010', 'data': [], 'lines': {'lineWidth': 1.2}},
                     ]

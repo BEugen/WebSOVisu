@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Газоанализаторы ПЦ (feat. CNTK)</title>
+    <title>Газоанализаторы ПЦ (feat. CatBoost)</title>
     <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/sovisu.css' %}">
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
@@ -16,7 +16,7 @@
    <header class="featured">
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">Показания газоанализаторов ПЦ (feat. Keras, TensorFlow Google)</p>
+                    <p class="site-title">Показания газоанализаторов ПЦ (feat. CatBoost)</p>
                 </div>
                 <div class="float-right">
                     <nav>
@@ -32,11 +32,12 @@
         <div id="body">
             <section class="content-wrapper main-content clear-fix height_full">
                 <div class="height_full float-left half_width">
-              <div id="dv_triangle" class="triangle_div">
-                  <object id="nn" type="image/svg+xml" data="{% static 'svg/obj.svg' %}" width="100%" height="100%"></object>
-              </div>
-                     <div id="dv_wheater" class="half_height-1 width_full weather_div">
+
+                    <div id="dv_wheater" class="half_height-1 width_full weather_div">
                   <canvas class="triangle_canvas" id="wheater"></canvas>
+              </div>
+                    <div id="dv_triangle" class="triangle_div">
+                  <object id="nn" type="image/svg+xml" data="{% static 'svg/obj.svg' %}" width="100%" height="100%"></object>
               </div>
                 </div>
                 <div class="float-right half_width height_full">
@@ -53,8 +54,8 @@
        <div id="t" class="l-text l-font" title="Температура воздуха (градусы Цельсия) на высоте 2 метра над поверхностью земли">T = ???</div>
        <div id="p" class="l-text l-font" title="Атмосферное давление, приведенное к среднему уровню моря (миллиметры ртутного столба">P = ???</div>
        <div id="ff" class="l-text l-font" title="Cкорость ветра на высоте 10-12 метров над земной поверхностью, осредненная за 10-минутный период, непосредственно предшествовавший сроку наблюдения (метры в секунду">FF = ???</div>
-       <div id="ff10" class="l-text l-font" title="Максимальное значение порыва ветра на высоте 10-12 метров над земной поверхностью за 10-минутный период, непосредственно предшествующий сроку наблюдения (метры в секунду)">FF10 = ???</div>
-       <div id="u" class="l-text l-font" title="Относительная влажность (%) на высоте 2 метра над поверхностью земли">U = ???</div>
+      <!-- <div id="ff10" class="l-text l-font" title="Максимальное значение порыва ветра на высоте 10-12 метров над земной поверхностью за 10-минутный период, непосредственно предшествующий сроку наблюдения (метры в секунду)">FF10 = ???</div>
+       <div id="u" class="l-text l-font" title="Относительная влажность (%) на высоте 2 метра над поверхностью земли">U = ???</div>-->
    </div>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -63,6 +64,11 @@
             d1.push([i, Math.sin(i)]);
         }
 
+        function legendFormatter(label, series) {
+            return '<div ' +
+                'style="font-size:1.8em;text-align:center;padding:2px;">' +
+                label +' </div>';
+        };
         var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
 
         // A null signifies separate line segments
@@ -100,6 +106,7 @@
                     position: "left",
                 }],
             legend: {
+                labelFormatter: legendFormatter,
                 position: "ne",
                 backgroundOpacity: 0.0,
                 labelBoxBorderColor: null,

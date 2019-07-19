@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.db.models.functions import Coalesce
 import calendar
 from datetime import timedelta
+import random
 
 
 class Weather(models.Model):
@@ -112,3 +113,22 @@ class DataChart(object):
 
     def make_datetime(self, dt):
         return calendar.timegm(dt.timetuple()) * 1000
+
+
+class TestData(object):
+    def get_data(self):
+        data = dict()
+        random.seed()
+        data['n'] = round(random.random(), 2)
+        data['m'] = round(random.random(), 2)
+        data['ug'] = round(random.random(), 2)
+        data['n_n'] = random.random()
+        data['n_m'] = random.random()
+        data['n_ug'] = random.random()
+        data['v_n'] = random.random()
+        data['v_m'] = random.random()
+        data['v_ug'] = random.random()
+        data['n_q'] = 192
+        data['m_q'] = 192
+        data['ug_q'] = 192
+        return data

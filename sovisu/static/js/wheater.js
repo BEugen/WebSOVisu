@@ -135,15 +135,14 @@ function drawwheater(data)
     var pos = triangle.offset();
     var legend = $("#legend-w");
     legend.height(h*0.5);
-    legend.width(0.33*w);
+    legend.width(0.7*w);
     $("#ndate-v").text(data['wth_date']);
-    $("#t").text('T = ' + data['T'] + '°C');
-    $("#p").text('P = ' + data['P'] + 'мм рт. с.');
-    $("#ff").text('FF = ' + data['ff10'] + 'м/с');
-    $("#ff10").text('FF10 = ' + data['ff3'] + 'м/с');
-    $("#u").text('U = ' + data['U'] + '%');
-    legend.offset({top: Math.floor(pos.top + (h-h*0.5)), left: Math.floor(pos.left + w + 2)});
+    $("#t").text('Температура = ' + data['T'] + '°C');
+    $("#p").text('Давление = ' + data['P'] + 'мм рт. с.');
+    $("#ff").text('Скорость ветра = ' + data['ff10'] + 'м/с');
+    //$("#ff10").text('FF10 = ' + data['ff3'] + 'м/с');
+    //$("#u").text('U = ' + data['U'] + '%');
+    legend.offset({top: Math.floor(pos.top -h*0.1 ), left: Math.floor(pos.left + w + 15)});
     legend.show();
     //
 }
-

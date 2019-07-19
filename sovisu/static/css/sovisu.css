@@ -230,16 +230,16 @@ ul#menu {
 }
 .triangle_div
 {
-    margin-left: 11%;
-    margin-top: -3%;
+    margin-left: 20%;
+    margin-top: -32%;
     width: 84%;
-    height: 50%;
+    height: 62%;
 }
 
 .weather_div
 {
-    margin-left: 20%;
-    margin-top: -15%;
+    margin-left: 7%;
+    margin-top: 4%;
 }
 .triangle_canvas {
     top: 0;
@@ -291,5 +291,5 @@ ul#menu {
 .l-font
 {
     font-family: Verdana;
-    font-size: 1.0em;
+    font-size: 1.8em;
 }

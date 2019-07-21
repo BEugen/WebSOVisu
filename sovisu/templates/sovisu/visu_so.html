@@ -128,8 +128,7 @@
         const listener = function () {
             const svgDoc = a.contentDocument;
             const svgRoot = svgDoc.documentElement;
-            getDataTube(svgRoot, '/visu_ajax_gzd', '{{ csrf_token }}')
-                    .then(data => drawDataTube(data));
+            getTybeData(svgRoot, '/visu_ajax_gzd', '{{ csrf_token }}');
         };
         a.removeEventListener("load", listener, false);
         a.addEventListener("load", listener, false);

@@ -117,6 +117,8 @@ class DataChart(object):
 
 class TestData(object):
     def get_data(self):
+        ALARM = 0.5
+        WARNING = 0.3
         data = dict()
         random.seed()
         data['n'] = round(random.random(), 2)
@@ -131,4 +133,20 @@ class TestData(object):
         data['n_q'] = 192
         data['m_q'] = 192
         data['ug_q'] = 192
+        data['n_n_q'] = 192
+        data['m_n_q'] = 192
+        data['ug_n_q'] = 192
+
+        if data['n'] >= WARNING:
+            data['a_n'] = 0.5
+        if data['n'] >= ALARM:
+            data['a_n'] = 1.0
+        if data['m'] >= WARNING:
+            data['a_m'] = 0.5
+        if data['m'] >= ALARM:
+            data['a_m'] = 1.0
+        if data['ug'] >= WARNING:
+            data['a_ug'] = 0.5
+        if data['ug'] >= ALARM:
+            data['a_ug'] = 1.0
         return data

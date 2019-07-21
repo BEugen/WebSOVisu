@@ -17,19 +17,29 @@ async function getDataTube(root, url, token)
         referrer: 'no-referrer',
         body: JSON.stringify({'csrfmiddlewaretoken': token})});
     let data = await response.json();
+    window.setTimeout(function () {
+                    getDataTube(root, url, token)
+                    .then(data => drawDataTube(data));
+                }, 2000);
     return [root, data];
+}
+
+function getTybeData(root, url, token)
+{
+     getDataTube(root, url, token)
+                    .then(data => drawDataTube(data));
 }
 
 function drawDataTube(data)
 {
     var root = data[0];
     data = data[1];
-   $("#md_so2_txt", root).text(data.v_m);
-   $("#md_so2_txt", root).text(data.n_m);
-   $("#ng_so2_txt", root).text(data.v_n);
-   $("#ng_so2_txt", root).text(data.n_n);
-   $("#ugms_so2_txt", root).text(data.v_ug);
-   $("#ugms_so2_txt", root).text(data.n_ug);
+   $("#md_so2_txt tspan:nth-child(1)", root).text(data.v_m.toFixed(3));
+   $("#md_so2_txt tspan:nth-child(1)", root).text(data.n_m.toFixed(3));
+   $("#ng_so2_txt tspan:nth-child(1)", root).text(data.v_n.toFixed(3));
+   $("#ng_so2_txt tspan:nth-child(1)", root).text(data.n_n.toFixed(3));
+   $("#ugms_so2_txt tspan:nth-child(1)", root).text(data.v_ug.toFixed(3));
+   $("#ugms_so2_txt tspan:nth-child(1)", root).text(data.n_ug.toFixed(3));
    drawText(root, data.v_m, data.m_q, "md_so2");
    drawText(root, data.v_n, data.n_q, "ng_so2");
    drawText(root, data.v_ug, data.ug_q, "ugms_so2");
@@ -48,7 +58,7 @@ function drawAlarm(root, val, prefix)
 {
     if(val > 0)
    {
-       if(val > 1)
+       if(val >= 1)
        {
            $("#" + prefix + "_so2", root).css('fill', '#ff0042e3');
            $("#" + prefix + "_cloud", root).css('fill', '#ff0042e3');
@@ -88,12 +98,12 @@ function drawAlarmPredict(root, val, prefix)
 }
 function drawText(root, val, quality, prefix)
 {
-    if(quality > 192)
+    if(quality >= 192)
     {
-       $("#" + prefix + "_txt", root).text(val);
+       $("#" + prefix + "_txt tspan:nth-child(1)", root).text(val.toFixed(3));
     }
     else
     {
-        $("#" + prefix + "_txt", root).text("?.????");
+        $("#" + prefix + "_txt tspan:nth-child(1)", root).text("?.????");
     }
 }

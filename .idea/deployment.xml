@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="Django" compareModeInSync="TIMESTAMP">
+  <component name="PublishConfigData" serverName="Django" compareModeInSync="TIMESTAMP">
     <serverData>
       <paths name="Django">
         <serverdata>
@@ -10,14 +10,6 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="DjangoRoot">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
     </serverData>
-    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

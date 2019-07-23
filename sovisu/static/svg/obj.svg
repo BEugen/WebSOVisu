@@ -14,7 +14,7 @@
    height="980"
    id="svg3018"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="obj.svg"
    viewBox="0 0 1129.8824 850.00001">
   <defs
@@ -113,20 +113,20 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.6"
-     inkscape:cx="613.49624"
-     inkscape:cy="517.41335"
+     inkscape:zoom="2.4"
+     inkscape:cx="772.04161"
+     inkscape:cy="382.21481"
      inkscape:document-units="px"
-     inkscape:current-layer="g6726"
+     inkscape:current-layer="g3290"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1920"
-     inkscape:window-height="1016"
-     inkscape:window-x="1920"
-     inkscape:window-y="27"
+     inkscape:window-width="1600"
+     inkscape:window-height="1137"
+     inkscape:window-x="1592"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      showborder="true" />
   <metadata
@@ -168,19 +168,19 @@
            transform="translate(0,50.95833)">
           <g
              id="g6599"
-             transform="matrix(1.1433826,0,0,1.0928998,43.541974,-457.52903)">
+             transform="matrix(1.1433826,0,0,1.0928998,-71.75213,-492.11723)">
             <path
                inkscape:connector-curvature="0"
                id="ugms_cloud"
                d="m 356.09661,46.126218 c -45.41808,0 -83.06424,10.17769 -90.0625,23.46875 -33.44684,2.858228 -57.84375,11.793221 -57.84375,22.374999 0,12.886653 36.20073,23.343753 80.84375,23.343753 32.35126,0 60.23827,-5.48127 73.15625,-13.40625 47.56129,-0.95719 85.15625,-13.050843 85.15625,-27.843752 0,-15.417949 -40.85402,-27.9375 -91.25,-27.9375 z"
-               style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.78913891;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+               style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.78913891;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
                inkscape:label="#ugms_cloud" />
             <path
                sodipodi:nodetypes="cczccc"
                inkscape:connector-curvature="0"
                id="ugms_tube"
                d="M 186.49958,113.40463 C 175.04542,234.61055 155.33417,355.81637 143.875,477.0221 c 0,0 24.60809,6.79187 64.58037,6.57522 39.97228,-0.21664 65.16963,-6.57522 65.16963,-6.57522 -11.05909,-121.28809 -31.7222,-242.48656 -42.46833,-363.79557 -21.72709,-1.12424 -24.02759,-1.51232 -44.65709,0.1781 z"
-               style="fill:url(#linearGradient3170);fill-opacity:1;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.78913879;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+               style="fill:url(#linearGradient3170);fill-opacity:1.0;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.78913879000000000;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
             <g
                transform="matrix(1.2688484,0,0,1.295773,-69.416513,-12.361414)"
                id="g6571">
@@ -194,7 +194,7 @@
                    x="335.83331"
                    height="43.333332"
                    width="104.16666"
-                   id="rect6510"
+                   id="ugms_so2_b"
                    style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.39532292;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
                 <text
                    id="ugms_so2_txt"
@@ -214,7 +214,7 @@
                  transform="translate(44,62)">
                 <rect
                    style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.39532292;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-                   id="ugms_so2_p"
+                   id="ugms_so2_p_b"
                    width="104.16666"
                    height="43.333332"
                    x="335.83331"
@@ -344,8 +344,8 @@
                  transform="translate(44,10)"
                  id="md_so2">
                 <rect
-                   style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.39532292;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-                   id="rect3242"
+                   style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.39532292;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+                   id="md_so2_b"
                    width="104.16666"
                    height="43.333332"
                    x="335.83331"
@@ -373,8 +373,8 @@
                    x="335.83331"
                    height="43.333332"
                    width="104.16666"
-                   id="md_so2_p"
-                   style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.39532292;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                   id="md_so2_p_b"
+                   style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.39532292;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
                 <text
                    id="md_so2_p_txt"
                    y="177.36569"
@@ -466,19 +466,19 @@
           </g>
           <g
              id="g3290"
-             transform="matrix(1.1433826,0,0,1.0928998,160.75768,-14.799626)">
+             transform="matrix(1.1433826,0,0,1.0928998,160.75768,-134.70546)">
             <path
                inkscape:connector-curvature="0"
                id="ng_cloud"
                d="m 356.09661,46.126218 c -45.41808,0 -83.06424,10.17769 -90.0625,23.46875 -33.44684,2.858228 -57.84375,11.793221 -57.84375,22.374999 0,12.886653 36.20073,23.343753 80.84375,23.343753 32.35126,0 60.23827,-5.48127 73.15625,-13.40625 47.56129,-0.95719 85.15625,-13.050843 85.15625,-27.843752 0,-15.417949 -40.85402,-27.9375 -91.25,-27.9375 z"
-               style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.78913891;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+               style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.78913891;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
                inkscape:label="#ng_cloud" />
             <path
                sodipodi:nodetypes="cczccc"
                inkscape:connector-curvature="0"
                id="ng_tube"
                d="M 186.49958,113.40463 C 175.04542,234.61055 155.33417,355.81637 143.875,477.0221 c 0,0 24.60809,6.79187 64.58037,6.57522 39.97228,-0.21664 65.16963,-6.57522 65.16963,-6.57522 -11.05909,-121.28809 -31.7222,-242.48656 -42.46833,-363.79557 -21.72709,-1.12424 -24.02759,-1.51232 -44.65709,0.1781 z"
-               style="fill:url(#linearGradient3346);fill-opacity:1;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.78913879;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+               style="fill:url(#linearGradient3346);fill-opacity:1;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.78913879;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
             <g
                transform="matrix(1.2688484,0,0,1.295773,-69.416513,-12.361414)"
                id="g3296">
@@ -492,7 +492,7 @@
                    x="335.83331"
                    height="43.333332"
                    width="104.16666"
-                   id="rect3300"
+                   id="ng_so2_b"
                    style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.39532292;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
                 <text
                    id="ng_so2_txt"
@@ -512,7 +512,7 @@
                  transform="translate(44,62)">
                 <rect
                    style="fill:#20ff00;fill-opacity:0.24090911;fill-rule:evenodd;stroke:#101f2a;stroke-width:1.39532292;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-                   id="ng_so2_p"
+                   id="ng_so2_p_b"
                    width="104.16666"
                    height="43.333332"
                    x="335.83331"

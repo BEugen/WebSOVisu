@@ -60,20 +60,20 @@ function drawAlarm(root, val, prefix)
    {
        if(val >= 1)
        {
-           $("#" + prefix + "_so2", root).css('fill', '#ff0042e3');
+           $("#" + prefix + "_so2_b", root).css('fill', '#ff0042e3');
            $("#" + prefix + "_cloud", root).css('fill', '#ff0042e3');
            $("#" + prefix + "_tube", root).css('fill', 'url(#linearGradient3865)');
        }
        else
        {
-           $("#" + prefix + "_so2", root).css('fill', '#ffc200e3');
+           $("#" + prefix + "_so2_b", root).css('fill', '#ffc200e3');
            $("#" + prefix + "_cloud", root).css('fill', '#ffc200e3');
            $("#" + prefix + "_tube", root).css('fill', 'url(#linearGradient3873)');
        }
    }
    else
    {
-      $("#" + prefix + "_so2", root).css('fill', '#20ff003d');
+      $("#" + prefix + "_so2_b", root).css('fill', '#20ff003d');
       $("#" + prefix + "_cloud", root).css('fill', '#20ff003d');
       $("#" + prefix + "_tube", root).css('fill', 'url(#linearGradient3288)');
    }
@@ -84,16 +84,16 @@ function drawAlarmPredict(root, val, prefix)
    {
        if(val > 1)
        {
-           $("#" + prefix + "_so2_p", root).css('fill', '#ff0042e3');
+           $("#" + prefix + "_so2_p_b", root).css('fill', '#ff0042e3');
        }
        else
        {
-           $("#" + prefix + "_so2_p", root).css('fill', '#ffc200e3');
+           $("#" + prefix + "_so2_p_b", root).css('fill', '#ffc200e3');
        }
    }
    else
    {
-      $("#" + prefix + "_so2_p", root).css('fill', '#20ff003d');
+      $("#" + prefix + "_so2_p_b", root).css('fill', '#20ff003d');
    }
 }
 function drawText(root, val, quality, prefix)

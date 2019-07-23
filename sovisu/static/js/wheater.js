@@ -142,7 +142,7 @@ function drawwheater(data)
     $("#ff").text('Скорость ветра = ' + data['ff10'] + 'м/с');
     //$("#ff10").text('FF10 = ' + data['ff3'] + 'м/с');
     //$("#u").text('U = ' + data['U'] + '%');
-    legend.offset({top: Math.floor(pos.top -h*0.1 ), left: Math.floor(pos.left + w + 15)});
+    legend.offset({top: Math.floor(pos.top -h*0.1 ), left: Math.floor(pos.left + w *0.9)});
     legend.show();
     //
 }
